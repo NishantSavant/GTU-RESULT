@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>GTU RESULT,AHMEDABAD</title>
+</head>
+    <body >
+        <div class="gtu-result" align="center">
+            <div class="header" align="left">
+                <img src="images.jpeg" class="GTU-logo" alt="GTU-logo">
+                <span class="GTU"><strong>
+                    Gujarat Technology University Ahmedabad
+                    </strong>
+                </span>
+            </div>
+            <hr class="hor-line">
+            <div class="search-search-result">
+                <table align="center">
+                    <tr>
+                        <td>
+                <div class="Search">
+                    <div class="search1">
+                        &#128270 <strong>SEARCH:</strong><br></div><br>
+                        <p class="session"><strong>Session</strong></p><p class="Summer">Summer 2025</p>
+                        <form>
+                            <label for="Exam" class="Exam">Exam</label>
+                                <select name="Exam" class="select-exam">
+                                    <option value="DIPL SEM 2">...DIPL SEM 2- Regular(MAY 2025)</option>
+                                    <option value="DIPL SEM 2">...DIPL SEM 2- Remedial(MAY 2025)</option>
+                                </select>
+                                    <br>
+                            <label for="Enroll" class="Enroll">Enroll No.</label>
+                                <input type="text" id="studentEnroll">
+                            OR      <br>
+                            <label for="Seat" class="Seat">Seat No.</label>
+                                <input type="text">
+                                    <br>
+                            <label for="password" class="Password">Password</label>
+                                <input type="password" placeholder="Enter Student Portal Password" id="studentPassword">
+                                    <br>
+                                </form>
+                            <label for="code" class="captcha">Code :</label>
+                                <input type="text" class="code1" value="5678"><p class="reload">&#128260</p>
+                                <input type="text" class="code">
+                            <button class="button" onclick="loadPersonById()">SEARCH</button>
+<script>
+  function loadPersonById() {
+    const id = document.getElementById("studentEnroll").value.trim();
+    const password = document.getElementById("studentPassword").value.trim();
+
+    // Example list of allowed IDs and passwords (in real apps, this would be server-side)
+    const validUsers = {
+      "249020307056": "Nishant@01",
+      "249020307048": "KUNAL@2007",
+      "249020307009": "AATMIY@2008",
+    };
+
+    if (!id || !password) {
+      document.getElementById("personContent").innerHTML = "<p style='color:red;'>Please enter both Enrollment No. and Password.</p>";
+      return;
+    }
+
+    // Check if ID exists and password matches
+    if (!validUsers[id] || validUsers[id] !== password) {
+      document.getElementById("personContent").innerHTML = "<p style='color:red;'>Invalid ID or Password.</p>";
+      return;
+    }
+
+    // Load result if credentials are valid
+    const filename = id + ".html";
+    fetch(filename)
+      .then(response => {
+        if (!response.ok) throw new Error("Result file not found");
+        return response.text();
+      })
+      .then(data => {
+        document.getElementById("personContent").innerHTML = data;
+      })
+      .catch(error => {
+        document.getElementById("personContent").innerHTML = "<p style='color:red;'>Unable to load result.</p>";
+        console.error(error);
+      });
+      
+    const filename1 = id + "_marks.html";
+    fetch(filename1)
+      .then(response => {
+        if (!response.ok) throw new Error("Result file not found");
+        return response.text();
+      })
+      .then(data => {
+        document.getElementById("marksContent").innerHTML = data;
+      })
+      .catch(error => {
+        document.getElementById("marksContent").innerHTML = "<p style='color:red;'>Unable to load result.</p>";
+        console.error(error);
+      });
+    }
+</script>
+
+<script>
+  document.addEventListener('contextmenu', event => event.preventDefault());
+</script>
+
+<script>
+  document.addEventListener('keydown', function (event) {
+    if (
+      event.key === "F12" ||
+      (event.ctrlKey && event.shiftKey && event.key === "I") ||
+      (event.ctrlKey && event.shiftKey && event.key === "J") ||
+      (event.ctrlKey && event.key === "U")
+    ) {
+      event.preventDefault();
+    }
+  });
+</script>
+
+
+
+
+                    </div>
+                        </td>
+                        <td>
+                    <div class="search-result">
+                        <div class="search-result1">
+                            <svg width="17" height="17" viewBox="0 0 24 24" fill="green" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 2L3 5V11C3 16.52 7.03 21.74 12 23C16.97 21.74 21 16.52 21 11V5L12 2Z"/>
+                                <path d="M10 14L7.5 11.5L6.08 12.92L10 16.83L17.92 8.91L16.5 7.5L10 14Z" fill="white"/>
+                            </svg>
+                            <strong>SEARCH RESULT:</strong><br><br>
+                        </div>
+                        <div class="student-info" id="personContent">
+                                 
+                        </div>
+                        </div>
+                        </td>
+                    </tr>
+                </table>
+                </div>
+                <div id="marksContent">
+
+                </div>
+                
+            </div>
+        </body>
+    </html>
